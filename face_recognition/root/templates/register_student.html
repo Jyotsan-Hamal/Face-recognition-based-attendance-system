@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- Include Bootstrap CSS (you can adjust the CDN link or use a local copy) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-image: linear-gradient(to right, #00B3FF , #0062FF);
+        }
+        header img {
+            width: 130px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            height:600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        label, .text-muted {
+            color: #495057;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            margin-top: 30px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .mt-5 {
+            text-align: center;
+            padding-top:15px ;
+        }
+
+        label, input {
+            padding: 10px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #Register {
+            padding: 10px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .Back-to-class {
+            width: 100%;
+        }
+        input[type="text"], input[type="number"], input[type="file"] {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            height: 38px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        input[type="text"]:hover, input[type="number"]:hover, input[type="file"]:hover {
+            border-color: #007bff;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="file"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .custom-file-input:focus + .custom-file-label {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .container a{
+            display: flex;
+            justify-content: center;
+        }
+        a .Back-to-class {
+            color: white;
+        }
+        .Back-to-class{
+            margin-top: 8px;
+            background-color: #007bff;
+            border: none;
+            border-radius:5px;
+            margin-bottom: 35px;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .Back-to-class:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            {% load static %}
+            
+            <img src= "{% static 'root/so.png' %}" alt="">
+        </div>
+    </header>
+    <h1>Register for class {{ class_number }}</h1>
+    <div class="container">
+        <h2 class="mt-5">Student Form</h2>
+        <form method="post" id="registration-form" class="mt-4" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if messages %}
+            <div class="alert alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <ul class="messages">
+                    {% for message in messages %}
+                        <p class="{% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        
+            <label for="class_number">Class:</label>
+            <input type="number" id="class_number" name="class_number" value="{{class_number}}" readonly>
+            
+            <!-- Input for the first image -->
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image1" name="image1" accept="image/*">
+                <label class="custom-file-label" for="image1">Choose Image 1</label>
+            </div>
+            
+            <!-- Input for the second image -->
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image2" name="image2" accept="image/*">
+                <label class="custom-file-label" for="image2">Choose Image 2</label>
+            </div>
+            
+            <!-- Input for the third image -->
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image3" name="image3" accept="image/*">
+                <label class="custom-file-label" for="image3">Choose Image 3</label>
+            </div>
+            
+            <button type="submit" id="Register" class="btn btn-primary">Register</button>
+            
+
+        </form>
+        <a href="{% url 'class_details' class_number=class_number %}"><button class="Back-to-class">Back to class {{class_number}}</button></a>
+    </div>
+
+    <!--  Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popper.js"></script>
+</body>
+</html>

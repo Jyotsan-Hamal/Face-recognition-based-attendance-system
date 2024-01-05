@@ -1,0 +1,242 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+:root {
+  --primary-color: #0a22f9;
+  --text-color: #1d1d1d;
+  --bg-color: #f1f1fb;
+}
+/* Dash broad details  */
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background-image: linear-gradient(to right, #00B3FF , #0062FF);
+}
+.container{
+  display: flex;
+}
+nav{
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background: #fff;
+  width: 280px;
+  overflow: hidden;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.logo span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+a{
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 14px;
+  display: table;
+  width: 280px;
+  padding: 10px;
+}
+nav .fas{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+}
+a:hover{
+  background: #eee;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+/* Main Section  Class details */
+.main{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top{
+  display: flex;
+  width: 100%;
+}
+.main-top h1{
+  font-size: 32px;
+  
+  text-align: center;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+
+}
+.main-skills{
+  display: flex;
+  margin-top: 20px;
+}
+.main-skills .card{
+  width: 25%;
+  height: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.main-skills .card h3{
+  margin: 10px;
+  text-transform: capitalize;
+}
+.main-skills .card p{
+  font-size: 14px;
+ 
+}
+
+.main-skills .card button a {
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 160px;
+  height: 30px;
+  cursor: pointer;
+  text-decoration: none; /* Add this line to remove underline from anchor tag */
+  box-shadow: none; /* Add this line to remove the shadow */
+}
+
+.main-skills .card i{
+  font-size: 22px;
+  padding: 10px;
+}
+
+/* Calander  */
+
+
+/* body {
+  background-color: #fff;
+} */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.calendar {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+}
+.calendar .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+.calendar .header .month {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.calendar .header .btns {
+  display: flex;
+  gap: 10px;
+}
+.calendar .header .btns .btn {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--primary-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.calendar .header .btns .btn:hover {
+  background-color: #db0933;
+  transform: scale(1.05);
+}
+.weekdays {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.weekdays .day {
+  width: calc(100% / 7 - 10px);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.days .day {
+  width: calc(100% / 7 - 10px);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+.days .day:not(.next):not(.prev):hover {
+  color: #fff;
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+.days .day.today {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+.days .day.next,
+.days .day.prev {
+  color: #ccc;
+}
+.days .day.day:nth-child(7n) {
+  background-color: red;
+  color: white; /* Optional: Change the text color to white for better contrast */
+}
+
+
