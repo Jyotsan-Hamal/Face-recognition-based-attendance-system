@@ -61,7 +61,7 @@ def draw_face_detection(frame,frame_processor,detections):
             y = int(ymin + roi.size[1]*point[1])
             cv2.circle(frame,(x,y),1,(0,255,255),2)
         text = image_recognizer(frame,text,identity,face_point,0.7)
-    return frame,text
+    return frame
 def image_recognizer(frame,text,identity,face_point,threshold):
     xmin ,ymin = face_point
     if identity.id!=FaceIdentifier.UNKNOWN_ID:
@@ -129,7 +129,7 @@ def db():
     sid_value = 2  # Student ID to update
     new_present_days = 1  # New value for total_present
 
-    update_query = f"UPDATE student_table SET total_present = {new_present_days} WHERE sid = {sid_value};"
+    update_query = f"UPDATE student_table SET date = '2024-01-02' WHERE sid = {sid_value};"
 
     cur.execute(update_query)
 
@@ -142,33 +142,16 @@ def db():
 
 
 
-
-cap = cv2.VideoCapture(0)
+path = "./videos/up.mp4"
+cap = cv2.VideoCapture(path)
 frame_processor = FrameProcessor()
 metrics = PerformanceMetrics()
-count = 0
-prev_id = None
 id_list = set()
 while True:
-    start_time = perf_counter()
+
     ret, frame = cap.read()
     detections = frame_processor.face_process(frame)
-    frame, text = draw_face_detection(frame, frame_processor, detections)
-    try:
-        id = int(text[-1])
-        if id == prev_id:
-            count += 1
-            if count == 5:
-                if id not in id_list:
-                    id_list.add(id)
-                    update_total_present_by_id(id)
-                count = 0  # Reset count after updating
-        else:
-            count = 0  # Reset count if IDs are different
-        prev_id = id  # Update prev_id for the next iteration
-    except ValueError:
-        continue
-    metrics.update(start_time, frame)
+    frame= draw_face_detection(frame, frame_processor, detections)
     cv2.imshow("face", frame)
     key = cv2.waitKey(1)
     if key in {ord('q'), ord('Q'), 27}:

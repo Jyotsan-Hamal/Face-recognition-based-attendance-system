@@ -11,7 +11,7 @@ import time
 from datetime import date
 import cv2
 import numpy as np
-
+import psycopg2
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import base64
@@ -83,7 +83,28 @@ def dashboard_view(request):
         messages.error(request, "Please input username and password")
         return redirect('landing_page')
     else:
-        return render(request, 'dashboard.html')  
+        DATABASE_URL = 'postgresql://postgres:2*aA2*eFec-bB3AfF14B-ad4G*gAb*dD@monorail.proxy.rlwy.net:39199/railway'
+
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            cur = conn.cursor()
+
+            # Fetch the total number of students
+            select_query = "SELECT COUNT(*) AS total_students FROM student_table;"
+            cur.execute(select_query)
+            total_students = cur.fetchone()[0]
+
+            # Close the cursor and connection
+            cur.close()
+            conn.close()
+
+            # Pass the total_students value to the template
+            return render(request, 'dashboard.html', {'total_students': total_students})
+
+        except psycopg2.Error as e:
+            # Handle the error appropriately, e.g., log it or show a user-friendly message
+            messages.error(request, "Error connecting to the database.")
+            return redirect('landing_page')  
     
     
 def user_logout(request):
@@ -123,7 +144,7 @@ def add_student(request,class_number):
         image2 = request.FILES.get('image2')
         image3 = request.FILES.get('image3')
         
-        present_day = 0
+        present_day = 1
         today_date = date.today()
         try:
             student = Student.objects.create(
