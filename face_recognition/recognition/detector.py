@@ -143,7 +143,7 @@ def db():
 
 
 path = "./videos/up.mp4"
-cap = cv2.VideoCapture(path)
+cap = cv2.VideoCapture(0)
 frame_processor = FrameProcessor()
 metrics = PerformanceMetrics()
 id_list = set()
