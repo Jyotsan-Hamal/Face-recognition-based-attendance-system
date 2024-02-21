@@ -18,7 +18,11 @@ conda install python=3.8.18
 pip install -r requirements.txt
 
 ```
-
+## Photos
+![dashboard](photos/heh.png)
+![spil](photos/jimo.png)
+![noo](photos/pl.png)
+![mo](photos/kimo.png)
 ## Usage
 Configure the database settings in the Django project’s settings.py file.
 
