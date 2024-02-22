@@ -1,6 +1,12 @@
 # Face Recognition Attendance System
 # Kathfest-Hackathon project
 ## Team Phoenix
+
+## Contributors
+- [Yukesh panta](https://github.com/YukeshPanta)
+- [Jyotsan Hamal](https://github.com/Jyotsan-Hamal)
+- [Nikesh Shrestha](https://github.com/Nik-doid)
+- [Mandeep chaudhary](https://github.com/Mandip69)
 ## Overview
 This Face Recognition Attendance System is designed to automate attendance tracking using facial recognition technology. The system captures the face of students, recognizes them, updates their attendance in the database, and provides an admin dashboard built with Django for monitoring and managing student attendance.
 
@@ -55,11 +61,6 @@ It is recommended to deploy this system in a secure environment to protect sensi
 
 This system can be extended to include additional features such as notifications, reporting, and more.
 
-## Contributors
-- [Yukesh panta](https://github.com/YukeshPanta)
-- [Jyotsan Hamal](https://github.com/Jyotsan-Hamal)
-- [Nikesh Shrestha](https://github.com/Nik-doid)
-- [Mandeep chaudhary](https://github.com/Mandip69)
 
 ## Feel free to contribute to the project and make it more robust and feature-rich.
 
