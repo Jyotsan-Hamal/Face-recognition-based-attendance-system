@@ -152,6 +152,7 @@ while True:
     ret, frame = cap.read()
     detections = frame_processor.face_process(frame)
     frame= draw_face_detection(frame, frame_processor, detections)
+    
     cv2.imshow("face", frame)
     key = cv2.waitKey(1)
     if key in {ord('q'), ord('Q'), 27}:

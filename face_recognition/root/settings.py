@@ -80,12 +80,12 @@ WSGI_APPLICATION = "root.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': config("ENGINE"),
-        'NAME': config("NAME"),
-        'USER': config("USER"),
-        'PASSWORD': config("PASSWORD"),
-        'HOST': config("HOST"),    # Set to the host where your PostgreSQL server is running
-        'PORT': config("PORT"),         # Set to the port on which your PostgreSQL server is listening
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': "railway",
+        'USER': "postgres",
+        'PASSWORD': "2*aA2*eFec-bB3AfF14B-ad4G*gAb*dD",
+        'HOST': "monorail.proxy.rlwy.net",    # Set to the host where your PostgreSQL server is running
+        'PORT': 39199,         # Set to the port on which your PostgreSQL server is listening
     }
 }
 
